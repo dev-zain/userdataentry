@@ -82,12 +82,23 @@ def identify(request):
             myDataList = f.read().splitlines()
         
         while True:
-        
+#         now this is the part I think I'd advice you adjust.
+# There are two things you could possibly do here: 1. if you had a separate database table for the rc_ids instead of a text file, you would be able to have a complete separation of concerns
+# and would be able to filter out the table with the rc_ids gotten from the user_scan.
+# 2. It's no problem though; since you have the rc_id column in your User table(user model), you can can do something like:
             success, img = cap.read()
             for barcode in decode(img):
                 myData = barcode.data.decode('utf-8')
                 print(myData)
-        
+#        a.  Around here where you are checking if the myData exists in your textfile (myDataList), do something like:
+#                 try:
+#                   user_exists= User.objects.get(rc_id=myData).exists()
+#                 except User.DoesNotExist:
+#                       return redirect("signup_page")
+#                 if user_exists:
+#                         return render(request, "your_template.html", context)
+
+# the code above should validate for you for each iteration, whether the rc_id exists in the user table or not.
                 if myData in myDataList:
                     myOutput = 'Authorized'
                     myColor = (0,255,0)
