@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+
+
+    {% block content %}
+    <style>
+        
+        #div1{
+            margin: 0px;
+            padding: 0px;
+            border: 2px solid black;
+            width: 650px;
+            height: 370px;
+            margin-left: 370px;
+            margin-top: 60px;
+            border-radius: 0px;
+            background-color: white;
+        }
+        #p1{
+            background-color: red;
+            margin:0px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            font-size: 30px;
+            padding: 10px;
+            
+        }
+
+        #div2 img{
+            
+            width: 140px;
+            height: 130px;
+           
+            padding: 0px;
+            margin-top: 2px;
+            margin-right: 2px;
+            float: right;
+            
+        }
+
+        #div2{
+            float: right;
+            width: 20%;
+        }
+
+
+        /* .barcode{
+            border: 0;
+            width: 120px;
+            height: 80px;
+            margin-left: 40px;
+            margin-top: 20px;
+        } */
+
+        
+        #div3{
+            float: left;
+            margin-left: 70px;
+            margin-top: -45%;
+            margin-bottom: 0px;
+            width: 70%;
+            line-height: 150%;
+            
+        }
+        #p2{
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        #label1{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 15px;
+            font-weight: bold;
+            opacity: 1;
+        }
+        #label2{
+            font-size: 16px;
+            /* font-weight: bold; */
+            margin-left: 5px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            
+            font-weight: bold;
+        }
+
+        #div4{
+            background-color: black;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+            width: 10%;
+            height: 82%;
+            /* margin-right: 40px; */
+            /* border: 2px; */
+            /* text-align: center; */
+            /* transform: rotate(-90); */
+            transform: rotate(180deg);
+            writing-mode: vertical-lr;
+            text-align: center;
+            /* margin-top: -40px; */
+            
+        }
+
+         /* .vertical{
+            
+           
+        } */
+
+        .line{
+            margin-top: -30px;
+            margin-left: 230px;
+            
+        }
+
+        .auth{
+            margin-left: 240px;
+            margin-top: 15px;
+            line-height: 70%;
+            font-family: monospace;
+            font-size: small;
+            font-weight: bold;
+        }
+       
+    </style>
+
+
+
+    <div id="div1" >
+
+        
+
+        <p id="p1">Resedential CARD</p>
+        <div class="image" id="div2">
+        <img src="{{user.photo.url}}" alt="" class="image">
+        <img src="{{user.code.url}}" alt="" class="barcode" style="margin-left: 1px;">
+        </div>
+       
+        <div id="div4">
+            <p class="vertical"> RC_ID:{{user.rc_id}}</p>
+           
+            </div>
+       
+      
+       <div id="div3" >
+        
+           <p id="p2"><label id="label1">Name:</label> <label id="label2">{{user.name}}</label></p>
+           <p id="p2"><label id="label1">CNIC:</label> <label id="label2">{{user.cnic}}</label></p>
+           <p id="p2"><label id="label1">Age:</label> <label id="label2">{{user.age}}</label></p>
+           <p id="p2"><label id="label1">Phone Number:</label> <label id="label2">{{user.mobile_number}}</label></p>
+           <p id="p2"><label id="label1">Address:</label> <label id="label2">{{user.address}}</label></p>
+           <p id="p2"><label id="label1">Type/Regs oF Vehicle:</label> <label id="label2">{{user.regn_of_vehicle}}</label></p>
+           <p id="p2"><label id="label1">Issued:</label> <label id="label2">{{user.issue_date}}</label></p>
+           <p id="p2"><label id="label1">Expires:</label> <label id="label2">{{user.expiry_date}}</label></p>
+
+           <p class="line"> ____________________</p>
+          <h4 class="auth"> Issuing Authority</h4> 
+           
+       </div>
+       
+
+      
+    </div>
+
+    
+
+   <a href="{% url 'backside' user.id %}" class="btn btn-info "> Barcode </a>
+    
+{% endblock %}

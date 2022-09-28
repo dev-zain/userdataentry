@@ -1,0 +1,55 @@
+{% load static %}
+
+
+{% block content %}
+<style>
+        
+    #div1{
+        margin: 0px;
+        padding: 0px;
+        border: 2px solid black;
+        width: 650px;
+        height: 370px;
+        margin-left: 370px;
+        margin-top: 60px;
+        border-radius: 0px;
+        background-color: white;
+    }
+
+    h1{
+        text-align: center;
+        text-decoration: underline;
+    }
+
+    h3{
+        font-size: 25px;
+    }
+
+
+
+
+
+   
+</style>
+
+
+
+    <!-- BACKSIDE -->
+
+    <div id="div1" >
+
+        <h1> WARNING </h1>
+
+        <ul>
+            <li><h3> Holder must return this card to issuing authority after the date of expiry</h3></li>
+            <li><h3>Any person finding this card is requested to forward it (in an unstamped enveloped) dir to HQ 33 SSB.</h3></li>
+            <li><h3> Contorl room mobile :- 0322-4181749</h3></li>
+            <img src="{{user.barcode.url}}" alt="" style="width: 300px; height: 70px; margin-left: 140px; margin-top: -3.8px;">
+            
+        </ul>
+
+       
+
+    </div>
+
+{% endblock %}

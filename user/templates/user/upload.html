@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    body{
+        background: #ede7e6; 
+/* background: -webkit-linear-gradient(to right, #2a0845, #6441A5); 
+background: linear-gradient(to right, #2a0845, #6441A5);  */
+    }
+
+    #cke_id_body{
+        width: 100% !important;
+    }
+    #container{
+        background-color: azure;
+        width: 50%;
+        box-shadow: rgba(0,0,0,0.24) 0px 3px 8px ;
+        height: auto;
+        padding: 30px 20px 20px 20px;
+        border-radius: 30px;
+        margin-bottom: 20px;
+    }
+        
+       
+
+
+
+    #container h3{
+        text-align: center;
+    }
+</style>
+
+    
+
+<div class="container mt-5" id="container">
+    <h3> <strong> Add User </strong> </h3>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        {{form.media}}
+        <input class="btn btn-outline-primary" type="submit" value="Save User">
+
+    </form>
+</div>
+
+<script>
+    let inputfields = document.getElementsByTagName('input')
+    let bodyfield = document.getElementById('id_body')
+    // let selectfield = document.getElementById('id_category')
+    for (let i =0; i<inputfields.length; i++){
+        inputfields[i].classList.add('form-control')
+    }
+    bodyfield.classList.add('form-control')
+    // selectfield.classList.add('form-select')
+</script>
+
+{% endblock %}

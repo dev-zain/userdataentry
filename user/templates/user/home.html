@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+<h1 class="text-center"> Users Data Table </h1>
+<table class="table table-striped mt-10">
+    <thead>
+      <tr>
+        
+        <th scope="col">Name</th>
+        <th scope="col">Rc-Id</th>
+        <th scope="col">More Info</th>
+        <th scope="col">Update</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+      <tr>
+        
+        <td>{{user.name}}</td>
+        <td>{{user.rc_id}}</td>
+        <td><a href="{% url 'details' user.id %}" class="btn btn-success"> View Details</a></td>
+        <td><a href="{% url 'update' user.id %}" class="btn btn-danger"> Update User</a></td>
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+
+</div>
+
+  {% endblock %}
